@@ -2,14 +2,15 @@ let snake=undefined;
 let food=undefined;
 let numberOfRows=60;
 let numberOfCols=120;
-
 let animator=undefined;
+let score = new Score();
+
 
 const addScore = function(){
-  let scoreBoard = document.getElementById('score')
-  let score = +scoreBoard.innerHTML;
-  score+=10;
-  scoreBoard.innerHTML = score;
+  let scoreBoard = document.getElementById('score');
+  score.updateScore();
+  let currentScore = score.getCurrentScore();
+  scoreBoard.innerHTML = currentScore;
 }
 
 const animateSnake=function() {
@@ -54,7 +55,6 @@ const createSnake=function() {
   body.push(tail);
   body.push(tail.next());
   let head=tail.next().next();
-
   snake=new Snake(head,body);
 }
 
